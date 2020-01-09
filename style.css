@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700');
+
+:root{
+  --planet-nine-dimension: 500px;
+  --planet-nine-tilt: rotate(20deg);
+
+  /*--blip-dimension: 60px;*/
+  --transparent-bkg: rgb(0, 0, 0, 0.0);
+}
+body{
+	background: url("./Images/8k_stars.jpg") no-repeat center center fixed;
+	background-size: cover;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+}
+
+.ball{
+	display: absolute;
+	border-radius: 50%;
+	margin: 0;
+	position: relative;
+	transform-style: preserve-3d;
+	box-shadow: inset -45px -15px 50px 2px #000, 0 0 20px 2px, inset 10px 0px 12px -2px rgba(255,255,255,.075);
+}
+.space{
+  display: inline-block;
+  margin: 20px;
+  perspective: 1200px;
+	perspective-origin: 50% 50%;
+  background-color: var(--transparent-bkg);
+}
+/*
+.space::before{
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: -15px;
+  height: 110%;
+  border-left: 2px dashed rgba(255,255,255,1);
+  transform: rotate(20deg);
+}*/
+
+#p9-container{
+  background-color: var(--transparent-bkg);
+  margin: 0 auto;
+  position: absolute;
+  top: 10%;
+  right: 50%;
+  display: block;
+  width: 300px;
+  height: 300px;
+}
+#planet-nine{
+  --spinvar: -1000px;
+  height: var(--planet-nine-dimension);
+  width: var(--planet-nine-dimension);
+  background: url("./Images/gas_giant.jpg") repeat-x; /*repeat background only horizontally*/
+  background-size: 1000px;
+  animation: spin-planet 10s linear infinite;
+  transform: var(--planet-nine-tilt);
+}
+
+@keyframes spin-planet{
+	0%{
+		background-position: var(--spinvar) 0;
+	}
+	100%{
+		background-position: 0 0;
+	}
+}
+
+/*
+#blip1{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
+#blip2{
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}
+.blip{
+  margin: 0 0;
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.6; 
+  width: var(--blip-dimension);
+  height: var(--blip-dimension);
+}
+.blipping{
+  border-radius: 50%;
+  animation: radar 2.3s infinite linear;
+}
+.delayedBlip{
+  animation-delay: -1.6s;
+}
+
+
+@keyframes radar{
+  0%{
+    opacity: 1; transform: scale(0); 
+  }
+  40%{
+    opacity: 0.5; transform: scale(0.5);
+  }
+  100%{
+    opacity: 0; transform: scale(1.0);
+  }
+}
+*/
+
+#planet-name{
+  position: absolute;
+  background-color: var(--transparent-bkg);
+  color: #fff;
+  font-size: 75px;
+  font-weight: 100;
+  top: 75%;
+  left: 37%;
+  opacity: 0.9;
+}
+#nav{
+  position: absolute;
+  top: 22%;
+  left: 2%;
+  float:left;
+  height: 150px;
+  width: 200px;
+  color: #fff;
+  background-color: var(--transparent-bkg);
+  font-size: 125%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.75;
+}
+a:hover{
+  opacity: 1.0;
+}
+
+/*Modal*/
+.modal-window {
+  position: fixed;
+  background-color: rgba(200, 200, 200, 0.50);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.modal-window:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-window>div {
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 2rem;
+  background: #fff;
+  color: #444;
+}
+.modal-window header {
+  font-weight: bold;
+}
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+.modal-close:hover {
+  color: #000;
+}
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+.popup {
+  position: absolute;
+  display: inline-block;
+  user-select: none;
+  transform: rotate(-20deg);
+}
+.popup .popuptext {
+  position: absolute;
+  visibility: hidden;
+  background-color: rgb(59, 59, 59, 0.7);
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  border-radius: 6px;
+  bottom: 125%;
+  left: 50%;
+  width: 200px;
+  padding: 8px 0;
+  z-index: 1;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.6s;
+  font-weight: bold;
+}
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(59, 59, 59, 0.7) transparent transparent transparent;
+}
+.popup:hover .popuptext{
+  visibility: visible;
+  opacity: 1;
+}
+.popup-font-style{
+  font-size: 10px;
+  font-style: italic;
+  font-weight: normal;
+}
